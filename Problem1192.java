@@ -3,6 +3,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+Great explanation https://www.youtube.com/watch?v=aZXi1unBdJA
+ */
 public class Problem1192 {
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
         List<List<Integer>> critialPaths = new ArrayList<>();
@@ -18,7 +21,7 @@ public class Problem1192 {
         }
 
         int[] reachSteps = new int[n];
-        for (int i = 0; i < reachSteps.length; i++) reachSteps[i] = Integer.MAX_VALUE;
+        Arrays.fill(reachSteps, Integer.MAX_VALUE);
 
         dfs(0, -1, 0, reachSteps, connectionMap, critialPaths);
 
@@ -54,7 +57,7 @@ public class Problem1192 {
         br.readLine();
         String rawInput = br.readLine();
         List<List<Integer>> conenctions = new ArrayList<>();
-        String r = "\\[(\\d+),(\\d+)\\]";
+        String r = "\\[(\\d+),(\\d+)]";
         Pattern p = Pattern.compile(r);
         Matcher m = p.matcher(rawInput);
         while (m.find()) {
